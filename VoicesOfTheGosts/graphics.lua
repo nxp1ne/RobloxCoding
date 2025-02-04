@@ -1,13 +1,20 @@
 -- Создаем PostProcessing эффекты
 local lighting = game:GetService("Lighting")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Models = ReplicatedStorage.Models.ModelsForPlayers -- game.ReplicatedStorage.Models.ModelsForPlayers
 
 -- Включаем туман
-lighting.FogStart = 10
-lighting.FogEnd = 100
+lighting.FogStart = 100
+lighting.FogEnd = 1000
 lighting.FogColor = Color3.new(0.1, 0.1, 0.1) -- Темный туман
 
 -- Bloom (свечение)
 local bloom = Instance.new("BloomEffect")
+local flashlight = Instance.new("PointLight")
+flashlight.Color = Color3.new(1, 1, 1) -- white light maybe
+flashlight.Brightness = 0.7
+flashlight.Range = 12
 bloom.Intensity = 0.8
 bloom.Size = 24
 bloom.Threshold = 0.7
